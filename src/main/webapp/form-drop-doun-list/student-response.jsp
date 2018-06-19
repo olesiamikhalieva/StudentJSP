@@ -25,10 +25,10 @@
 <h2>All students:</h2>
 <table border="2">
     <tr>
-        <td>name</td>
-        <td>sername</td>
-        <td>gender</td>
-        <td>phone</td>
+        <th>name</th>
+        <th>sername</th>
+        <th>gender</th>
+        <th>phone</th>
     </tr>
     <c:forEach var="student" items="${studentList}">
         <tr>
@@ -41,40 +41,22 @@
 </table>
 <table border="2">
     <tr>
-        <td>name</td>
-        <td>sername</td>
-        <td>gender</td>
-        <td>phone</td>
+        <th>name</th>
+        <th>sername</th>
+        <th>gender</th>
+        <th>phone</th>
     </tr>
-    <c:choose>
-        <c:when test="${param.gender.equals(\"male\")}">
-            <h2>MEN:</h2>
-                <c:forEach var="student" items="${studentList}">
-                    <c:if test="${student.gender.equals(\"male\")}">
-                        <tr>
-                        <td>${student.name}</td>
-                        <td>${student.sername}</td>
-                        <td>${student.gender}</td>
-                        <td>${student.phone}</td>
-                        </tr>
-                    </c:if>
-                </c:forEach>
-        </c:when>
-        <c:otherwise>
-            <h2>WOMEN:</h2>
+    <h2>${param.gender}</h2>
+    <c:forEach var="student" items="${studentList}">
+        <c:if test="${student.gender.equals(param.gender)}">
+            <tr>
+                <td>${student.name}</td>
+                <td>${student.sername}</td>
+                <td>${student.gender}</td>
+                <td>${student.phone}</td>
             </tr>
-                <c:forEach var="student" items="${studentList}">
-                    <c:if test="${student.gender.equals(\"female\")}">
-                        <tr>
-                        <td>${student.name}</td>
-                        <td>${student.sername}</td>
-                        <td>${student.gender}</td>
-                        <td>${student.phone}</td>
-                        </tr>
-                    </c:if>
-                </c:forEach>
-        </c:otherwise>
-    </c:choose>
+        </c:if>
+    </c:forEach>
 </table>
 </body>
 </html>
